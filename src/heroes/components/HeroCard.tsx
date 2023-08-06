@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Hero } from "../interfaces";
 
 interface CharactersProps {
@@ -18,7 +19,7 @@ export const HeroCard = (hero: Hero) => {
             <h1 className="card">
                 <div className="row no-gutters">
                     <div className="col-md-4">
-                        <img className="card-img" src={heroImageUrl} alt={hero.superhero} />
+                        <img className="card-img" src={heroImageUrl} alt={hero.superhero}   />
                     </div>
                     <div className="col-8">
                         <div className="card-body">
@@ -26,6 +27,14 @@ export const HeroCard = (hero: Hero) => {
                             <p className="card-text">{hero.alter_ego}</p>
 
                             <CharactersByHero characters={hero.characters} alter_ego={hero.alter_ego}/>
+
+                            <p className="card-text">
+                                <small className="text-muted">{hero.first_appearance}</small>
+                            </p>
+
+                            <Link to={`/hero/${hero.id}`}>
+                                More...
+                            </Link>
                         </div>
                     </div>
                 </div>
