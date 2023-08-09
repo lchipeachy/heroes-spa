@@ -1,13 +1,14 @@
 import { HeroCard } from ".";
 import { getHeroesByPublisher } from "../helpers";
 import { Hero } from "../interfaces";
+import { useMemo } from "react";
 
 interface HeroListProps { 
     publisher: string;
 }
 
 export const HeroList = ({publisher}: HeroListProps) => {
-    const heroes: Hero[] = getHeroesByPublisher(publisher);
+    const heroes: Hero[] = useMemo(() => getHeroesByPublisher(publisher), [publisher]) ;
 
     return (
         // **** Para mostrar nombres por lista ****
@@ -27,7 +28,6 @@ export const HeroList = ({publisher}: HeroListProps) => {
                     <HeroCard key={hero.id} {...hero}/>
                 ))
             }
-
         </div>
     )
 }
